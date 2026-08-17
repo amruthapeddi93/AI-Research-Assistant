@@ -39,12 +39,12 @@ if st.button("Start Research", type="primary"):
                 2. **Key Insights & Breakthroughs**: Bullet points detailing critical takeaways.
                 3. **Source Analysis & Comparison**: Direct comparison of perspectives and viewpoints.
                 4. **Detailed Report**: In-depth analytical breakdown.
-                5. **Citations & References**: Direct Markdown links to the authoritative sources found.
+                5. **Citations & References**: Direct Markdown links to authoritative sources found.
                 """
 
-                # Call Gemini with Google Search tool enabled
+                # Call Gemini with Google Search tool enabled using the current stable model
                 response = client.models.generate_content(
-                    model="gemini-2.5-flash",
+                    model="gemini-3.7-flash",
                     contents=prompt,
                     config=types.GenerateContentConfig(
                         tools=[types.Tool(google_search=types.GoogleSearch())]
@@ -87,5 +87,5 @@ if st.button("Start Research", type="primary"):
                         mime="text/markdown"
                     )
 
-            except Exception as e:  # noqa: BLE001
+            except Exception as e:
                 st.error(f"Error generating research report: {e}")
